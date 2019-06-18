@@ -10,11 +10,13 @@ class App extends Component {
 	}
 
 	componentDidMount() {
-		calculate(1000, 1)
-			.then(r => this.setState({
-            	loading: false,
-                result: r.data.result
-			}))
+		calculate(1000, 1000, 1)
+		.then(r => {
+			this.setState({
+				loading: false,
+				result: r.data.result
+			})
+		})
 	}
 
 	render() {

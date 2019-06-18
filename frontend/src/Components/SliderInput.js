@@ -3,6 +3,13 @@ import PropTypes from 'prop-types'
 import './SliderInput.css'
 
 export default class SliderInput extends Component {
+	constructor(props) {
+		super(props)
+
+		this.state = {
+			value: 0
+		}
+	}
 
 	handleChange(e) {
 		const value = e.target.value
