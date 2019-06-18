@@ -4,17 +4,9 @@ import './SliderInput.css'
 
 export default class SliderInput extends Component {
 
-	constructor(props) {
-		super(props)
-
-		this.state = {
-			value: props.defaultValue
-		}
-	}
-
 	handleChange(e) {
 		const value = e.target.value
-		this.setState({value})
+		this.props.handleChange(value)
 	}
 
 	render() {

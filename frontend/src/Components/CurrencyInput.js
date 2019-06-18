@@ -8,13 +8,12 @@ export default class CurrencyInput extends Component {
 
 		this.state = {
 			hasFocus: false,
-			value: props.defaultValue
 		}
 	}
 
 	handleChange(e) {
 		const value = e.target.value
-		this.setState({value})
+		this.props.handleChange(value)
 	}
 
 	handleFocus(e) {
