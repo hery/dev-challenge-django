@@ -26,16 +26,15 @@ export default class InputGraphSection extends Component {
                 this.state.added,
                 this.state.interest,
                 this.state.compoundPeriod)
-      .then(r => {
-        this.setState({
-          data: r.data.result
-        })
-      })
+      .then(
+          r => this.setState({ data: r.data.result }),
+          error => { console.debug(error) }
+      )
     })
   }
 
   render() {
-    const { data } = this.state
+    const { data } = this.state || this.props
 
     return (
       <div>

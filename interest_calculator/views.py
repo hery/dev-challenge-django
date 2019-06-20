@@ -6,7 +6,10 @@ import json
 
 def capital(savings_amount=0, monthly_deposit=0, interest_rate=0, month=0, compound_period=12):
     # A = P(1 + r)t
-    return savings_amount * (1 + interest_rate/100.0) * (month/12.0)
+    result = (1 + interest_rate/100.0)
+    result = float(savings_amount) * result
+    result = result * (month/12.0)
+    return result
 
 
 @require_POST
@@ -32,7 +35,5 @@ def calculate(request):
         "month": month,
         "amount": capital(savings_amount, monthly_deposit, interest_rate, month, compound_period)
     } for month in range(0, 24)] # 12 months * 50 years = 600 months
-
-    print(result)
     
     return JsonResponse({'result': result })
