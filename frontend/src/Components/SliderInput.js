@@ -22,7 +22,7 @@ export default class SliderInput extends Component {
 					value={value}
 					min={0.1}
 					max={10}
-					step={0.25}
+					step={0.1}
 					onChange={this.handleChange.bind(this)}/>
 			</div>
 		)

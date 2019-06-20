@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { VictoryLine, VictoryChart } from 'victory'
+import { VictoryLine, VictoryChart, VictoryAxis } from 'victory'
 
 export default class DisplayGraph extends Component {
 
@@ -16,10 +16,10 @@ export default class DisplayGraph extends Component {
 
 		const baseLabelStyles = {
   		fontFamily: "'Avenir Next', 'Avenir', 'Lato', 'Helvetica', 'Arial', 'Sans-Serif'",
-  		fontSize: 2,
+  		fontSize: 10,
   		letterSpacing: 'normal',
-  		padding: 10,
-  		fill: "#00b2ff",
+  		padding: 30,
+  		fill: "black",
   		stroke: "transparent"
 		};
 
@@ -44,23 +44,29 @@ export default class DisplayGraph extends Component {
 				}
 			}, baseProps),
 			line: Object.assign({
-    		style: {
-      		data: {
-        		fill: "transparent",
-        		stroke: "#00b2ff",
-        		strokeWidth: 2
-      		},
-      		labels: baseLabelStyles
-    		}
-  		}, baseProps)
+				style: {
+				data: {
+					fill: "transparent",
+					stroke: "#00b2ff",
+					strokeWidth: 2
+				},
+				labels: baseLabelStyles
+				}
+			}, baseProps)
 		};
 
 		return (
 			<div>
-				<VictoryChart
-					padding={{ left: 75, right:30,	bottom: 100, top: 20 }}
-					animate={{duration: 100}} theme={theme}>
+				<VictoryChart padding={{ left: 75, right:30,bottom: 100, top: 20 }}
+						      animate={{duration: 100}} 
+							  theme={theme}>
 					<VictoryLine {...{data}} y="amount"/>
+					<VictoryAxis dependentAxis
+						label="Total (£)"
+					/>
+					<VictoryAxis
+						label="Time (months)"
+					/>
 				</VictoryChart>
 			</div>
 		);
