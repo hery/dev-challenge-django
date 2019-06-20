@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { calculate } from "../API"
 import CurrencyInput from "./CurrencyInput"
 import SliderInput from "./SliderInput"
+import SelectInput from "./SelectInput"
 import DisplayGraph from "./DisplayGraph"
 import "./InputGraphSection.css"
 
@@ -78,9 +79,15 @@ export default class InputGraphSection extends Component {
                            this.updateValueForKey('interest', value)
           }}/>
 
+          <SelectInput defaultValue={12}
+                       handleChange={(value)=>{
+                          this.updateValueForKey('compoundPeriod', value)
+          }}/>
+
           <p className="saved"> saved: {this.state.saved} </p>
           <p className="added"> added: {this.state.added} </p>
           <p className="interest"> interest: {this.state.interest}</p>
+          <p className="compoundPeriod"> compound period: {this.state.compoundPeriod}</p>
 
         </div>
         <div className="financial-display">
