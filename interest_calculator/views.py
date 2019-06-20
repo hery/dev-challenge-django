@@ -4,12 +4,19 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 
-def capital(savings_amount=0, monthly_deposit=0, interest_rate=0, month=0, compound_period=12):
-    # A = P(1 + r)t
-    result = (1 + float(interest_rate)/100.0)
-    result = float(savings_amount) * result
-    result = result * (month/12.0)
-    return result
+def capital(savings_amount=0, monthly_deposit=0, interest_rate=7, month=1, compound_period=12):
+    # reference: https://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php
+    # [ P(1+r/n)^(nt) ] + [ PMT × (((1 + r/n)^(nt) - 1) / (r/n)) ]
+    
+    P = float(savings_amount)
+    r = float(interest_rate) / 100
+    n = float(compound_period)
+    t = float(month) / 12 # years
+    PMT = monthly_deposit
+
+    principal_compound_interest = P*(1+r/n)**(n*t)
+    future_series_value = PMT * (((1 + r/n)**(n*t) - 1) / (r/n))
+    return principal_compound_interest + future_series_value
 
 
 @require_POST
