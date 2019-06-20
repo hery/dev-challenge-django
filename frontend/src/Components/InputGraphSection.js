@@ -87,11 +87,6 @@ export default class InputGraphSection extends Component {
                           this.updateValueForKey('compoundPeriod', value)
           }}/>
 
-          <p className="saved"> saved: {this.state.saved} </p>
-          <p className="added"> added: {this.state.added} </p>
-          <p className="interest"> interest: {this.state.interest}</p>
-          <p className="compoundPeriod"> compound period: {this.state.compoundPeriod}</p>
-
         </div>
         <div className="financial-display">
           <DisplayGraph

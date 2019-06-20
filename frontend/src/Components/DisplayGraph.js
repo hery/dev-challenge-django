@@ -57,7 +57,9 @@ export default class DisplayGraph extends Component {
 
 		return (
 			<div>
-				<VictoryChart animate={{duration: 100}} theme={theme}>
+				<VictoryChart
+					padding={{ left: 75, right:30,	bottom: 100, top: 20 }}
+					animate={{duration: 100}} theme={theme}>
 					<VictoryLine {...{data}} y="amount"/>
 				</VictoryChart>
 			</div>
