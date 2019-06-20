@@ -10,12 +10,23 @@ export default class InputGraphSection extends Component {
     super(props)
 
     this.state = {
+      loading: false,
       saved: 3000,
       added: 1500,
       interest: 7,
       compoundPeriod: 12, // monthly
       data: []
     }
+  }
+
+  componentDidMount() {
+    calculate(3000, 1500, 7)
+    .then(r => {
+        this.setState({
+            loading: false,
+            data: r.data.result
+        })
+    })
   }
 
   updateValueForKey(key, value) {
@@ -34,7 +45,12 @@ export default class InputGraphSection extends Component {
   }
 
   render() {
-    const { data } = this.state || this.props
+
+    if (this.state.loading) {
+        return <p>Loading...</p>
+    }
+
+    const { data } = this.state
 
     return (
       <div>
