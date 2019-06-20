@@ -12,7 +12,7 @@ def capital(savings_amount=0, monthly_deposit=0, interest_rate=7, month=1, compo
     r = float(interest_rate) / 100
     n = float(compound_period)
     t = float(month) / 12 # years
-    PMT = monthly_deposit
+    PMT = float(monthly_deposit)
 
     principal_compound_interest = P*(1+r/n)**(n*t)
     future_series_value = PMT * (((1 + r/n)**(n*t) - 1) / (r/n))

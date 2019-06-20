@@ -21,7 +21,10 @@ export default class InputGraphSection extends Component {
   }
 
   componentDidMount() {
-    calculate(3000, 1500, 7)
+    calculate(this.state.saved,
+        this.state.added,
+        this.state.interest,
+        this.state.compoundPeriod)
     .then(r => {
         this.setState({
             loading: false,
