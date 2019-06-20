@@ -5,10 +5,6 @@ import './SliderInput.css'
 export default class SliderInput extends Component {
 	constructor(props) {
 		super(props)
-
-		this.state = {
-			value: 0
-		}
 	}
 
 	handleChange(e) {
@@ -17,7 +13,7 @@ export default class SliderInput extends Component {
 	}
 
 	render() {
-		const { value } = this.state
+		const { value } = this.props
 
 		return (
 			<div className="fmz-slider">
